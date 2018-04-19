@@ -42,11 +42,15 @@ class App extends Component {
       });
   }
 
+  handleReFetch = () =>{
+    this.getArticles(this.state.wpApiUrl);
+  }
+
   render() {
     return ( 
       this.state.articles.length > 0 ?
       <div>
-        <ArticleContainer articles={this.state.articles} settings={this.state.settings}/>
+        <ArticleContainer articles={this.state.articles} settings={this.state.settings} handleReFetch={this.handleReFetch}/>
       </div>
       :
       <div className="application__loading">

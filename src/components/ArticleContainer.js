@@ -39,14 +39,13 @@ class ArticleContainer extends React.Component {
 
   timesRendered = (array, timesRendered, totalCycles) => {
     if (timesRendered > array.length * totalCycles) {
-      //window.location.reload();
       this.setState({
         timesRendered: 0,
       });
-      this.props.handleReload();
+      this.props.handleReFetch();
     }
     else {
-      //console.log(timesRendered);
+      
     }
   }
   secondsToMs = (sec) =>{
