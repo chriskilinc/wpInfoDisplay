@@ -42,10 +42,11 @@ class ArticleContainer extends React.Component {
       this.setState({
         timesRendered: 0,
       });
+      console.log("Should Refetch");
       this.props.handleReFetch();
     }
     else {
-      
+
     }
   }
   secondsToMs = (sec) =>{

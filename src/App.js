@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import logo from './logo.svg';
 import axios from 'axios';
+import _ from 'lodash';
 import './App.css';
 
 import ArticleContainer from './components/ArticleContainer';
@@ -16,8 +17,8 @@ class App extends Component {
       articles: [],
       wpApiUrl: "http://smartgallery.chriskilinc.com/wp-json/wp/v2/posts?_embed",
       settings: {
-        cycleInSeconds: 5,
-        totalCycles: 5
+        cycleInSeconds: 2,
+        totalCycles: 1
       },
     }
   }
@@ -43,8 +44,39 @@ class App extends Component {
   }
 
   handleReFetch = () =>{
-    this.getArticles(this.state.wpApiUrl);
+    console.log("Refetching");
+    this.refetchArticles(this.state.wpApiUrl);
   }
+
+  refetchArticles = (url) => {
+    axios
+      .get(url)
+      .then(response => {
+        if(_.isEqual(response.data, this.state.articles)){
+          console.log("Equal, keeping state");
+        }
+        else{
+          console.log("Not Equal, updating State");
+          this.setState({
+            articles: response.data
+          });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  arraysEqual = (arr1, arr2) => {
+    if(arr1.length !== arr2.length)
+        return false;
+    for(var i = arr1.length; i--;) {
+        if(arr1[i] !== arr2[i])
+            return false;
+    }
+
+    return true;
+}
 
   render() {
     return ( 
