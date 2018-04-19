@@ -43,7 +43,7 @@ class App extends Component {
       });
   }
 
-  handleReFetch = () =>{
+  handleReFetch = () => {
     console.log("Refetching");
     this.refetchArticles(this.state.wpApiUrl);
   }
@@ -52,11 +52,11 @@ class App extends Component {
     axios
       .get(url)
       .then(response => {
-        if(_.isEqual(response.data, this.state.articles)){
-          console.log("Equal, keeping state");
+        if (_.isEqual(response.data, this.state.articles)) {
+          //  Both Arrays are equal, do nothing
         }
-        else{
-          console.log("Not Equal, updating State");
+        else {
+          //  Arrays are not equal, refresh state to new array
           this.setState({
             articles: response.data
           });
@@ -66,18 +66,7 @@ class App extends Component {
         console.log(error);
       });
   }
-
-  arraysEqual = (arr1, arr2) => {
-    if(arr1.length !== arr2.length)
-        return false;
-    for(var i = arr1.length; i--;) {
-        if(arr1[i] !== arr2[i])
-            return false;
-    }
-
-    return true;
-}
-
+  
   render() {
     return ( 
       this.state.articles.length > 0 ?

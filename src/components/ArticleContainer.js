@@ -38,11 +38,13 @@ class ArticleContainer extends React.Component {
   }
 
   timesRendered = (array, timesRendered, totalCycles) => {
+    //  If the total cycle time of te gallery is met, it is finished and should fetch the api and check for changes
     if (timesRendered > array.length * totalCycles) {
       this.setState({
+        //  Reset the state of how many times the state have rendered
         timesRendered: 0,
       });
-      console.log("Should Refetch");
+      //  Refetch api
       this.props.handleReFetch();
     }
     else {
