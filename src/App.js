@@ -5,6 +5,7 @@ import logo from './logo.svg';
 import axios from 'axios';
 import './App.css';
 
+import ArticleContainer from './components/ArticleContainer';
 
 class App extends Component {
   constructor() {
@@ -13,7 +14,11 @@ class App extends Component {
     //  Initial State
     this.state = {
       articles: [],
-      wpApiUrl: "http://smartgallery.chriskilinc.com/wp-json/wp/v2/posts?_embed"
+      wpApiUrl: "http://smartgallery.chriskilinc.com/wp-json/wp/v2/posts?_embed",
+      settings: {
+        cycleInSeconds: 5,
+        totalCycles: 5
+      },
     }
   }
 
@@ -41,7 +46,7 @@ class App extends Component {
     return ( 
       this.state.articles.length > 0 ?
       <div>
-        <p>successfull</p>
+        <ArticleContainer articles={this.state.articles} settings={this.state.settings}/>
       </div>
       :
       <div className="application__loading">
