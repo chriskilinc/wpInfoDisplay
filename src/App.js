@@ -12,23 +12,27 @@ class App extends Component {
   constructor() {
     super();
 
-    //  Initial State
+    //  Initial State Properties
     this.state = {
       articles: [],
       wpApiUrl: "http://exp.tvostra.se/wp-json/wp/v2/posts?_embed",
+      applicationName: "Expeditionen",
       settings: {
         cycleInSeconds: 20,
-        totalCycles: 5
+        totalCycles: 5,
       },
       fetches: 0,
       totalFetches: 20,
     }
+    //  Code down here
+    window.document.title = this.state.applicationName;
   }
 
   componentDidMount = () => {
     //  Get Articles when component have mounted
     //  getArticles() will update state if successfull
     this.getArticles(this.state.wpApiUrl);
+    
   }
 
   // Async Api Call using Axios to talk with Wordpress Api
