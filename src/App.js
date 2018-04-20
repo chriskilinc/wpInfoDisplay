@@ -20,6 +20,8 @@ class App extends Component {
         cycleInSeconds: 20,
         totalCycles: 5
       },
+      fetches: 0,
+      totalFetches: 20,
     }
   }
 
@@ -44,8 +46,16 @@ class App extends Component {
   }
 
   handleReFetch = () => {
-    console.log("Refetching");
-    this.refetchArticles(this.state.wpApiUrl);
+    //  If the application have had x amount of fetches, reload the page (Solves: If new sourcecode have been remotely updated on the server, reload)
+    if(this.state.fetches >= this.state.totalFetches){
+      console.log("Reloading");
+      window.location.reload();
+    }
+    else{
+      console.log("Refetching");
+      this.refetchArticles(this.state.wpApiUrl);
+    }
+    
   }
 
   refetchArticles = (url) => {
@@ -61,6 +71,10 @@ class App extends Component {
             articles: response.data
           });
         }
+        
+        this.setState({
+          totalFetches: this.state.fetches + 1,
+        });
       })
       .catch(error => {
         console.log(error);
