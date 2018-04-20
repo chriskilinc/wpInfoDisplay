@@ -15,10 +15,10 @@ class App extends Component {
     //  Initial State
     this.state = {
       articles: [],
-      wpApiUrl: "http://smartgallery.chriskilinc.com/wp-json/wp/v2/posts?_embed",
+      wpApiUrl: "http://exp.tvostra.se/wp-json/wp/v2/posts?_embed",
       settings: {
-        cycleInSeconds: 2,
-        totalCycles: 1
+        cycleInSeconds: 20,
+        totalCycles: 5
       },
     }
   }
