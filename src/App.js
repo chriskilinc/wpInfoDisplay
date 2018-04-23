@@ -18,8 +18,8 @@ class App extends Component {
       wpApiUrl: "http://exp.tvostra.se/wp-json/wp/v2/posts?_embed",
       applicationName: "Expeditionen",
       settings: {
-        cycleInSeconds: 20,
-        totalCycles: 5,
+        cycleInSeconds: 7.5,
+        totalCycles: 1,
       },
       fetches: 0,
       totalFetches: 20,
@@ -40,9 +40,13 @@ class App extends Component {
     axios
       .get(url)
       .then(response => {
-        this.setState({
-          articles: response.data
-        });
+        if (response.data != _.isEmpty) {
+          this.setState({
+            articles: response.data
+          });
+        }else{
+          this.getArticles(url);
+        }
       })
       .catch(error => {
         console.log(error);
@@ -52,11 +56,11 @@ class App extends Component {
   handleReFetch = () => {
     //  If the application have had x amount of fetches, reload the page (Solves: If new sourcecode have been remotely updated on the server, reload)
     if(this.state.fetches >= this.state.totalFetches){
-      console.log("Reloading");
+      //console.log("Reloading");
       window.location.reload();
     }
     else{
-      console.log("Refetching");
+      //console.log("Refetching");
       this.refetchArticles(this.state.wpApiUrl);
     }
     
@@ -68,9 +72,11 @@ class App extends Component {
       .then(response => {
         if (_.isEqual(response.data, this.state.articles)) {
           //  Both Arrays are equal, do nothing
+          //console.log("Arrays are equal");
         }
         else {
           //  Arrays are not equal, refresh state to new array
+          //console.log("Arrays are different, updating state")
           this.setState({
             articles: response.data
           });
