@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../gutenberg.css';
 
 class ArticleContainer extends React.Component {
   constructor(props) {
@@ -87,7 +87,7 @@ class ArticleContainer extends React.Component {
           <div className="wp-article__footer">
             <div className="wp-article__footer--padding">
               <h1>{this.props.articles[this.state.activeIndex].title.rendered}</h1>
-              <i>background image not found</i>
+              <i>featuredmedia not found</i>
             </div>
           </div>
         </article>

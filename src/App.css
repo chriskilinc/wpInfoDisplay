@@ -8,7 +8,7 @@ h2,
 h3,
 h4,
 h5 {
-  margin: 0;
+  margin: 10px;
 }
 
 ::-webkit-scrollbar {
@@ -28,7 +28,7 @@ h5 {
   height: 87.5vh;
 }
 .wp-article__content--padding{
-  padding:7.5rem 25rem;
+  padding:2.5rem 5rem;
 }
 .wp-article__content h1{
   font-size: 3.5rem;
@@ -42,6 +42,7 @@ h5 {
 }
 .wp-article__footer h1{
   font-size: 32px;
+  margin: 0;
 }
 .wp-article__footer--padding{
   padding: 1rem;
