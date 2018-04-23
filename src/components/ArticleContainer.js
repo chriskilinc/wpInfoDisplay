@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class ArticleContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -37,6 +38,12 @@ class ArticleContainer extends React.Component {
     return copy;
   }
 
+  secondsToMs = (sec) => {
+    const ms = sec * 1000;
+    return ms;
+  }
+
+
   timesRendered = (array, timesRendered, totalCycles) => {
     //  If the total cycle time of te gallery is met, it is finished and should fetch the api and check for changes
     if (timesRendered > array.length * totalCycles) {
@@ -48,14 +55,9 @@ class ArticleContainer extends React.Component {
       this.props.handleReFetch();
     }
     else {
-
     }
   }
-  secondsToMs = (sec) =>{
-    const ms = sec * 1000;
-    return ms;
-  }
-
+ 
   render() {
     return (
       this.props.articles[this.state.activeIndex]._embedded['wp:featuredmedia'] != null ?
