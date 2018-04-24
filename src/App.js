@@ -32,7 +32,7 @@ class App extends Component {
     //  Get Articles when component have mounted
     //  getArticles() will update state if successfull
     this.getArticles(this.state.wpApiUrl);
-    
+
   }
 
   // Async Api Call using Axios to talk with Wordpress Api
@@ -40,12 +40,15 @@ class App extends Component {
     axios
       .get(url)
       .then(response => {
-        if (response.data != _.isEmpty) {
+        //  Checks if the response array is not empty
+        if (response.data.length > 0) {
           this.setState({
             articles: response.data
           });
-        }else{
-          this.getArticles(url);
+        } else {
+          //  If array is empty, refetch from api
+          console.log("array is empty");
+          this.handleRefetchWithTimeout(url, 10000);
         }
       })
       .catch(error => {
@@ -53,17 +56,22 @@ class App extends Component {
       });
   }
 
+  //  Fetches API after x amount of time
+  handleRefetchWithTimeout = (url, timeout) => {
+    setInterval(
+      this.getArticles(url),
+      timeout);
+  }
+
   handleReFetch = () => {
     //  If the application have had x amount of fetches, reload the page (Solves: If new sourcecode have been remotely updated on the server, reload)
-    if(this.state.fetches >= this.state.totalFetches){
+    if (this.state.fetches >= this.state.totalFetches) {
       //console.log("Reloading");
       window.location.reload();
-    }
-    else{
+    } else {
       //console.log("Refetching");
       this.refetchArticles(this.state.wpApiUrl);
     }
-    
   }
 
   refetchArticles = (url) => {
@@ -73,15 +81,14 @@ class App extends Component {
         if (_.isEqual(response.data, this.state.articles)) {
           //  Both Arrays are equal, do nothing
           //console.log("Arrays are equal");
-        }
-        else {
+        } else {
           //  Arrays are not equal, refresh state to new array
           //console.log("Arrays are different, updating state")
           this.setState({
             articles: response.data
           });
         }
-        
+
         this.setState({
           totalFetches: this.state.fetches + 1,
         });
@@ -101,6 +108,7 @@ class App extends Component {
       <div className="application__loading">
         <p>Loading.. {this.state.applicationName}<br /><i>Fetching from api</i></p>
       </div>
+      
     );
   }
 }
