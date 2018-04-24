@@ -24,6 +24,9 @@ h5 {
   background-size: 100% 100%;
   color: #fff;
 }
+.wp-article--nobg{
+  background:#0c0c0c;
+}
 .wp-article__content{
   height: 87.5vh;
 }
@@ -46,8 +49,6 @@ h5 {
 }
 .wp-article__footer--padding{
   padding: 1rem;
-  
-  
 }
 .wp-block-quote{
   border-left:3px solid;

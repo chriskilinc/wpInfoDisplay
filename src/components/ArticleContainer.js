@@ -76,9 +76,7 @@ class ArticleContainer extends React.Component {
           </div>
         </article>
         :
-        <article className="wp-article" style={{
-          background:'black',
-        }}>
+        <article className="wp-article wp-article--nobg">
           <div className="wp-article__content">
             <div className="wp-article__content--padding">
               <p dangerouslySetInnerHTML={{ __html: this.props.articles[this.state.activeIndex].content.rendered }}></p>
