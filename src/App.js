@@ -15,10 +15,10 @@ class App extends Component {
     //  Initial State Properties
     this.state = {
       articles: [],
-      wpApiUrl: "http://signage.chriskilinc.com/wp-json/wp/v2/posts?_embed",
+      wpApiUrl: "https://exp.tvostra.se/wp-json/wp/v2/posts?_embed",
       applicationName: "Signage",
       settings: {
-        cycleInSeconds: 7,
+        cycleInSeconds: 7.5,
         totalCycles: 1,
       },
       fetches: 0,
