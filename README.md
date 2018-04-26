@@ -1,4 +1,4 @@
-## WordPress information Screen Gallery
+## WordPress Information Screen Gallery
 
 An easy way to both display and edit Information the web. 
 Using ReactJs as the Gallery and the WordPress as both data storage and content management system.
@@ -57,9 +57,11 @@ Your app is ready to be deployed!
 
 If you understand how this all works, go ahead and use this for comercial purposes!
 
-If you would like this solution for your own Digital Signage, contact me and we will figure something out!
+If you would like this solution for your own Digital Signage, contact me and we will figure something out.
 
-Created by `Christopher Kilinc`
-[https://chriskilinc.com](Website)
-[https://github.com/chriskilinc/wpInfoScreen](Github)
+Please contact if any issues are found.
+
+Created by `Christopher Kilinc`<br>
+[https://chriskilinc.com](Website)<br>
+[https://github.com/chriskilinc/wpInfoScreen](Github)<br>
 [https://trello.com/b/C06qjDDc/wpinfo](Trello)
