@@ -16,7 +16,7 @@ class ArticleContainer extends React.Component {
       this.cycle(),
       this.secondsToMs(this.props.settings.cycleInSeconds));
     const runningTime = (this.props.settings.totalCycles * this.props.articles.length * this.props.settings.cycleInSeconds);
-    console.log("Running Time: " + runningTime + "s " + "before reload");
+    console.log("Running Time: " + runningTime + "s before reload");
 
   }
   cycle = () => {
@@ -52,6 +52,7 @@ class ArticleContainer extends React.Component {
         timesRendered: 0,
       });
       //  Refetch api
+      
       this.props.handleReFetch();
     }
     else {
