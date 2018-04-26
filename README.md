@@ -62,6 +62,6 @@ If you would like this solution for your own Digital Signage, contact me and we 
 Please contact if any issues are found.
 
 Created by `Christopher Kilinc`<br>
-[https://chriskilinc.com](Website)<br>
-[https://github.com/chriskilinc/wpInfoScreen](Github)<br>
-[https://trello.com/b/C06qjDDc/wpinfo](Trello)
+[Website](https://chriskilinc.com)<br>
+[Github](https://github.com/chriskilinc/wpInfoScreen)<br>
+[Trello](https://trello.com/b/C06qjDDc/wpinfo)
