@@ -15,8 +15,8 @@ class App extends Component {
     //  Initial State Properties
     this.state = {
       articles: [],
-      wpApiUrl: "https://exp.tvostra.se/wp-json/wp/v2/posts?_embed",
-      applicationName: "Signage",
+      wpApiUrl: "https://exp.tvostra.se/wp-json/wp/v2/posts?_embed",  //  Wordpress REST API url
+      applicationName: "Signage",   // Application name, this will also be the browser tab title
       settings: {
         cycleInSeconds: 7.5,  //  The amount of time an item will show before changing to the next in que
         totalCycles: 1,       //  Total Number of cycles the gallery will run before fetching the Api
@@ -24,9 +24,8 @@ class App extends Component {
       fetches: 0,         //  Current Api Fetches
       totalFetches: 1000, //  Total Api Fetches until total window reload 
     }
-    //  Code down here
+    //  Set the document title / Browser tab text
     window.document.title = this.state.applicationName;
-    console.log(window.location.href);
   }
 
   componentDidMount = () => {
