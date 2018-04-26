@@ -18,14 +18,15 @@ class App extends Component {
       wpApiUrl: "https://exp.tvostra.se/wp-json/wp/v2/posts?_embed",
       applicationName: "Signage",
       settings: {
-        cycleInSeconds: 7.5,
-        totalCycles: 1,
+        cycleInSeconds: 7.5,  //  The amount of time an item will show before changing to the next in que
+        totalCycles: 1,       //  Total Number of cycles the gallery will run before fetching the Api
       },
-      fetches: 0,
-      totalFetches: 20,
+      fetches: 0,         //  Current Api Fetches
+      totalFetches: 1000, //  Total Api Fetches until total window reload 
     }
     //  Code down here
     window.document.title = this.state.applicationName;
+    console.log(window.location.href);
   }
 
   componentDidMount = () => {
@@ -33,6 +34,23 @@ class App extends Component {
     //  getArticles() will update state if successfull
     this.getArticles(this.state.wpApiUrl);
 
+  }
+
+  //  Checks if client has Internet Connection. Returns true or falls.
+  hasInternet = () => {
+    axios
+      .get(window.location.href)
+      .then(response => {
+        // Has Internet
+        console.log("has internet");
+        return true;
+      })
+      .catch(error => {
+        // Does not have Internet
+        
+        console.log(error);
+        return false;
+      });
   }
 
   // Async Api Call using Axios to talk with Wordpress Api
@@ -65,32 +83,44 @@ class App extends Component {
 
   handleReFetch = () => {
     //  If the application have had x amount of fetches, reload the page (Solves: If new sourcecode have been remotely updated on the server, reload)
-    if (this.state.fetches >= this.state.totalFetches) {
-      //console.log("Reloading");
-      window.location.reload();
+    console.log(this.state.fetches)
+    if (this.state.fetches === this.state.totalFetches) {
+      
+      // Check internetconection
+      if(this.hasInternet){
+        //  Client has Internet Conection. Reload location.
+        console.log("reloading, has internet");
+        window.location.reload();
+      }
+      else{
+        // Has no Internetconection. Reset fetches so application will try again later when state.totalFetches has been met.
+        console.log("Client does not have Internet Connecion. Will not reload.")
+        this.setState({
+          fetches: 0,
+        });
+      }
     } else {
       //console.log("Refetching");
       this.refetchArticles(this.state.wpApiUrl);
     }
   }
 
+  //  This function will fetch the api and then compare the current api response to the recently fetched api response.
   refetchArticles = (url) => {
     axios
       .get(url)
       .then(response => {
         if (_.isEqual(response.data, this.state.articles)) {
           //  Both Arrays are equal, do nothing
-          //console.log("Arrays are equal");
         } else {
-          //  Arrays are not equal, refresh state to new array
-          //console.log("Arrays are different, updating state")
+          //  Arrays are not equal, refresh state to new updated array
           this.setState({
             articles: response.data
           });
         }
-
+        //  Increases the state.fetches by 1
         this.setState({
-          totalFetches: this.state.fetches + 1,
+          fetches: this.state.fetches +1,
         });
       })
       .catch(error => {
