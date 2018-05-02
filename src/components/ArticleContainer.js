@@ -28,6 +28,21 @@ class ArticleContainer extends React.Component {
     this.timesRendered(this.props.articles, this.state.timesRendered, this.props.settings.totalCycles)
   }
 
+  timesRendered = (array, timesRendered, totalCycles) => {
+    //  If the total cycle time of te gallery is met, it is finished and should fetch the api and check for changes
+    if (timesRendered > array.length * totalCycles) {
+      this.setState({
+        //  Reset the state of how many times the state have rendered
+        timesRendered: 0,
+      });
+      //  Refetch api
+
+      this.props.handleReFetch();
+    }
+    else {
+    }
+  }
+
   createRange = (length) =>
     Array.from(Array(length).keys());
 
@@ -39,26 +54,10 @@ class ArticleContainer extends React.Component {
   }
 
   secondsToMs = (sec) => {
-    const ms = sec * 1000;
-    return ms;
+    //const ms = sec * 1000;
+    return sec * 1000;
   }
 
-
-  timesRendered = (array, timesRendered, totalCycles) => {
-    //  If the total cycle time of te gallery is met, it is finished and should fetch the api and check for changes
-    if (timesRendered > array.length * totalCycles) {
-      this.setState({
-        //  Reset the state of how many times the state have rendered
-        timesRendered: 0,
-      });
-      //  Refetch api
-      
-      this.props.handleReFetch();
-    }
-    else {
-    }
-  }
- 
   render() {
     return (
       this.props.articles[this.state.activeIndex]._embedded['wp:featuredmedia'] != null ?
