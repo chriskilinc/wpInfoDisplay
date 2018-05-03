@@ -1,6 +1,8 @@
 import React from 'react';
 import '../gutenberg.css';
 
+import ArticleAside from '../components/ArticleAside';
+
 class ArticleContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -60,7 +62,7 @@ class ArticleContainer extends React.Component {
 
   render() {
     return (
-      this.props.articles[this.state.activeIndex]._embedded['wp:featuredmedia'] != null ?
+      /*this.props.articles[this.state.activeIndex]._embedded['wp:featuredmedia'] != null ?
         <article className="wp-article" style={{
           backgroundImage: `url(${this.props.articles[this.state.activeIndex]._embedded['wp:featuredmedia'][0].source_url})`,
         }}>
@@ -88,7 +90,8 @@ class ArticleContainer extends React.Component {
               <i>featuredmedia not found</i>
             </div>
           </div>
-        </article>
+        </article>*/
+        <ArticleAside />
     )
   }
 }

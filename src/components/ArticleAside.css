@@ -1,0 +1,32 @@
+.article-aside{
+
+}
+.article-aside--container{
+  overflow: auto;
+}
+.article-aside--article{
+  width: 80vw;
+  height:85vh;
+  background:#323232;
+  float:left;
+}
+.article-aside--aside{
+  width:20vw;
+  height:85vh;
+  background: #545454;
+  float:right;
+}
+.article-aside--footer{
+  display: flex;
+  width:100vw;
+  height:15vh;
+  background: #000;
+  align-items: center;
+}
+.article-aside--footer--banner{
+  display: flex;
+  width:100vw;
+  height:5vh;
+  align-items: center;
+  background: seagreen;
+}
