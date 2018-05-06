@@ -1,61 +1,84 @@
+:root{
+  --padding-medium: 25px;
+  --padding-large: 50px;
+  --padding-huge: 75px;
+  --article-height: 90vh;
+  --footer-height: 10vh;
+}
 .article-aside{
 
 }
-.article-aside--container{
+.article-aside__container{
   overflow: auto;
 }
-.article-aside--article{
+.article-aside__article{
   width: 80vw;
-  height:90vh;
+  height:var(--article-height);
   background:#fff;
   float:left;
+  background: no-repeat center center fixed stretch;
+  background-size: 100% 100%;
+  color:#fff;
 }
-.article-aside--article--container{
-  padding: 10px;
+.article-aside__article__container{
+  padding: var(--padding-huge);
+  height: auto;
+  max-height: var(--article-height)
 }
-.article-aside--aside{
+.article-aside__article__container h1{
+  font-size: 32px;
+  /* margin: 5px; */
+  color:transparent;
+}
+.article-aside__article__container p{
+  font-size: 24px;
+}
+.article-aside__aside{
   width:20vw;
-  height:90vh;
+  height:var(--article-height);
   background: #fff;
   float:right;
-  outline:1px solid #323232;
+  /* outline:1px solid #323232; */
 }
-.article-aside--aside--container{
-  /*padding:10px;*/
+.article-aside__aside__container{
+  max-height: 70vh;
+  height:auto;
+  overflow: hidden;
 }
-.article-aside--aside-article{
-  height:70vh;
+
+.article-aside__aside-article__container{
+  padding: var(--padding-medium);
 }
-.article-aside--footer{
+.article-aside__footer{
   display: flex;
   width:100vw;
-  height:10vh;
+  height:var(--footer-height);
   background: #f08100;
   align-items: center;
 }
-.article-aside--footer--banner{
+.article-aside__footer__banner{
   display: flex;
   width:100vw;
-  height:10vh;
+  height:var(--footer-height);
   align-items: center;
   background: transparent;
 }
 
-.article-aside--footer--banner img{
+.article-aside__footer__banner img{
   height:100%;
   max-width: 100%;
   margin: auto;
 }
 
 /*  CLOCK  */
-.article-aside--clock{
+.article-aside__clock{
   text-align: center;
   height: 20vh;
 }
-.article-aside--clock h1{
+.article-aside__clock h1{
   font-size: 3em;
   margin: 0;
 }
-.article-aside--clock p{
+.article-aside__clock p{
   font-size: 1.5em;
 }
