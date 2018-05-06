@@ -64,8 +64,8 @@ class App extends Component {
           // let filteredAsides = this.findAsideArticle(response.data);
           //  Find an Aside articles in response.data and REMOVE it.
           this.setState({
-            articles: this.cleanArticles(response.data),
-            asides: this.findAsideArticle(response.data),
+            articles: this.filterWpArrayByCategory(response.data, "Article"),
+            asides: this.filterWpArrayByCategory(response.data, "Aside"),
           });
         } else {
           //  If array is empty, refetch from api
@@ -80,15 +80,32 @@ class App extends Component {
 
   findAsideArticle = (array) => {
     let copy = [...array];
-    let aside = copy.filter(x => x.categories[0] > 1);
-    // console.log(aside)
-    return aside;
+    let aside = copy.filter(x => x._embedded['wp:term'][0][0].name == "Aside");
+    //  Check If there is any articles with category "Aside" asigned
+    if (aside[0] != null) {
+      return aside;
+    } else {
+      //  If the filter returns nothing, return a copy of the original array
+      //  Probably want to log this in some other way
+      console.log('No post with category "Aside" found.');
+      return copy;
+    }
   }
 
-  //  Remove ASIDE 
-  cleanArticles = (array) => {
-    return array;
+  //  Filter out Articles by Category Name
+  filterWpArrayByCategory = (array, categoryName) => {
+    let copy = [...array];
+    let filterArray = copy.filter(x => x._embedded['wp:term'][0][0].name == categoryName);
+    if(filterArray[0] != null){
+      return filterArray;
+    }else{
+      console.log('No post with category "Aside" found.');
+      return copy;
+    }
+    
   }
+
+  // ////////////////////////Fetches//////////////////////// //
   //  Fetches API after x amount of time
   handleRefetchWithTimeout = (url, timeout) => {
     setInterval(
@@ -130,8 +147,8 @@ class App extends Component {
         } else {
           //  Arrays are not equal, refresh state to new updated array
           this.setState({
-            articles: this.cleanArticles(response.data),
-            asides: this.findAsideArticle(response.data),
+            articles: this.filterWpArrayByCategory(response.data, "Article"),
+            asides: this.filterWpArrayByCategory(response.data, "Aside"),
           });
         }
         //  Increases the state.fetches by 1
