@@ -15,7 +15,8 @@ class App extends Component {
     //  Initial State Properties
     this.state = {
       articles: [],
-      wpApiUrl: "https://exp.tvostra.se/wp-json/wp/v2/posts?_embed",  //  Wordpress REST API url
+      asides:[],
+      wpApiUrl: "http://sgy.chriskilinc.com/wp-json/wp/v2/posts?_embed",  //  Wordpress REST API url
       applicationName: "Signage",   // Application name, this will also be the browser tab title
       settings: {
         cycleInSeconds: 7.5,  //  The amount of time an item will show before changing to the next in que
@@ -59,8 +60,12 @@ class App extends Component {
       .then(response => {
         //  Checks if the response array is not empty
         if (response.data.length > 0) {
+          //  Filter response.data array for any objects thats follows the right arguments to being an Aside Article.
+          // let filteredAsides = this.findAsideArticle(response.data);
+          //  Find an Aside articles in response.data and REMOVE it.
           this.setState({
-            articles: response.data
+            articles: this.cleanArticles(response.data),
+            asides: this.findAsideArticle(response.data),
           });
         } else {
           //  If array is empty, refetch from api
@@ -73,6 +78,17 @@ class App extends Component {
       });
   }
 
+  findAsideArticle = (array) => {
+    let copy = [...array];
+    let aside = copy.filter(x => x.categories[0] > 1);
+    // console.log(aside)
+    return aside;
+  }
+
+  //  Remove ASIDE 
+  cleanArticles = (array) => {
+    return array;
+  }
   //  Fetches API after x amount of time
   handleRefetchWithTimeout = (url, timeout) => {
     setInterval(
@@ -114,7 +130,8 @@ class App extends Component {
         } else {
           //  Arrays are not equal, refresh state to new updated array
           this.setState({
-            articles: response.data
+            articles: this.cleanArticles(response.data),
+            asides: this.findAsideArticle(response.data),
           });
         }
         //  Increases the state.fetches by 1
@@ -131,7 +148,7 @@ class App extends Component {
     return ( 
       this.state.articles.length > 0 ?
       <div>
-        <ArticleContainer articles={this.state.articles} settings={this.state.settings} handleReFetch={this.handleReFetch}/>
+        <ArticleContainer articles={this.state.articles} asides={this.state.asides} settings={this.state.settings} handleReFetch={this.handleReFetch}/>
       </div>
       :
       <div className="application__loading">
