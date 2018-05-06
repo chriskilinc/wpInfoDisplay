@@ -10,7 +10,11 @@ class ArticleContainer extends React.Component {
       articleIndexes: this.createRange(props.articles.length),
       activeIndex: 0,
       timesRendered: 0,
+      placeholder: {
+        image: "http://sgy.chriskilinc.com/wp-content/uploads/2018/05/black.png",
+      }
     };
+
   }
 
   componentDidMount() {
@@ -27,7 +31,7 @@ class ArticleContainer extends React.Component {
       activeIndex: this.state.articleIndexes[0],
       timesRendered: this.state.timesRendered + 1,
     });
-    this.timesRendered(this.props.articles, this.state.timesRendered, this.props.settings.totalCycles)
+    this.timesRendered(this.props.articles, this.state.timesRendered, this.props.settings.totalCycles);
   }
 
   timesRendered = (array, timesRendered, totalCycles) => {
@@ -91,7 +95,7 @@ class ArticleContainer extends React.Component {
             </div>
           </div>
         </article>*/
-        <ArticleAside />
+        <ArticleAside currentArticle={this.props.articles[this.state.activeIndex]} aside={this.props.asides[0]} placeholder={this.state.placeholder} />
     )
   }
 }
