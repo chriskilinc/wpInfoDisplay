@@ -1,8 +1,8 @@
 {
   "name": "wpinfoscreen",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
-  "homepage" : "http://exp.tvostra.se/app/",
+  "homepage": "http://exp.tvostra.se/app/",
   "dependencies": {
     "axios": "^0.18.0",
     "lodash": "^4.17.5",
