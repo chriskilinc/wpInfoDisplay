@@ -95,7 +95,7 @@ class ArticleContainer extends React.Component {
             </div>
           </div>
         </article>*/
-        <ArticleAside currentArticle={this.props.articles[this.state.activeIndex]} aside={this.props.asides[0]} placeholder={this.state.placeholder} />
+      <ArticleAside currentArticle={this.props.articles[this.state.activeIndex]} aside={this.props.asides[0]} placeholder={this.state.placeholder} />
     )
   }
 }

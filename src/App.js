@@ -15,7 +15,7 @@ class App extends Component {
     //  Initial State Properties
     this.state = {
       articles: [],
-      asides:[],
+      asides: [],
       wpApiUrl: "http://sgy.chriskilinc.com/wp-json/wp/v2/posts?_embed",  //  Wordpress REST API url
       applicationName: "Signage",   // Application name, this will also be the browser tab title
       settings: {
@@ -47,7 +47,7 @@ class App extends Component {
       })
       .catch(error => {
         // Does not have Internet
-        
+
         console.log(error);
         return false;
       });
@@ -100,14 +100,14 @@ class App extends Component {
     //  If the application have had x amount of fetches, reload the page (Solves: If new sourcecode have been remotely updated on the server, reload)
     console.log(this.state.fetches)
     if (this.state.fetches === this.state.totalFetches) {
-      
+
       // Check internetconection
-      if(this.hasInternet){
+      if (this.hasInternet) {
         //  Client has Internet Conection. Reload location.
         console.log("reloading, has internet");
         window.location.reload();
       }
-      else{
+      else {
         // Has no Internetconection. Reset fetches so application will try again later when state.totalFetches has been met.
         console.log("Client does not have Internet Connecion. Will not reload.")
         this.setState({
@@ -136,25 +136,25 @@ class App extends Component {
         }
         //  Increases the state.fetches by 1
         this.setState({
-          fetches: this.state.fetches +1,
+          fetches: this.state.fetches + 1,
         });
       })
       .catch(error => {
         console.log(error);
       });
   }
-  
+
   render() {
-    return ( 
+    return (
       this.state.articles.length > 0 ?
-      <div>
-        <ArticleContainer articles={this.state.articles} asides={this.state.asides} settings={this.state.settings} handleReFetch={this.handleReFetch}/>
-      </div>
-      :
-      <div className="application__loading">
-        <p>Loading.. {this.state.applicationName}<br /><i>Fetching from api</i></p>
-      </div>
-      
+        <div>
+          <ArticleContainer articles={this.state.articles} asides={this.state.asides} settings={this.state.settings} handleReFetch={this.handleReFetch} />
+        </div>
+        :
+        <div className="application__loading">
+          <p>Loading.. {this.state.applicationName}<br /><i>Fetching from api</i></p>
+        </div>
+
     );
   }
 }

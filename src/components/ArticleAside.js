@@ -11,8 +11,8 @@ class ArticleAside extends React.Component {
   //  Looks for an "featuredmedia" / background Image on the Current Article
   //  If none is found, add a placehodler image
   checkBackgroundImageStatus = () => {
-    if(this.props.currentArticle._embedded['wp:featuredmedia'] == null){
-      this.props.currentArticle._embedded['wp:featuredmedia'] = [{source_url: this.props.placeholder.image}];
+    if (this.props.currentArticle._embedded['wp:featuredmedia'] == null) {
+      this.props.currentArticle._embedded['wp:featuredmedia'] = [{ source_url: this.props.placeholder.image }];
     }
   }
 
