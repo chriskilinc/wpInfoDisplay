@@ -3,11 +3,6 @@ import '../gutenberg.css';
 import './ArticleAside.css';
 
 class ArticleAside extends React.Component {
-  constructor(props) {
-    super(props);
-    // console.log(props)
-  }
-
   //  Looks for an "featuredmedia" / background Image on the Current Article
   //  If none is found, add a placehodler image
   checkBackgroundImageStatus = () => {

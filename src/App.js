@@ -13,7 +13,7 @@ class App extends Component {
   constructor() {
     super();
 
-    
+
     //  Initial State Properties
     this.state = {
       articles: [],
@@ -30,7 +30,6 @@ class App extends Component {
     //  Get Articles when component have mounted
     //  getArticles() will update state if successfull
     this.getArticles(this.state.config.wpApiUrl);
-
   }
 
   //  Checks if client has Internet Connection. Returns true or falls.
@@ -39,12 +38,11 @@ class App extends Component {
       .get(window.location.href)
       .then(response => {
         // Has Internet
-        console.log("has internet");
         return true;
       })
       .catch(error => {
         // Does not have Internet
-
+        console.log("Client does not have internet connection.");
         console.log(error);
         return false;
       });
@@ -93,13 +91,13 @@ class App extends Component {
   filterWpArrayByCategory = (array, categoryName) => {
     let copy = [...array];
     let filterArray = copy.filter(x => x._embedded['wp:term'][0][0].name == categoryName);
-    if(filterArray[0] != null){
+    if (filterArray[0] != null) {
       return filterArray;
-    }else{
+    } else {
       console.log('No post with category "Aside" found.');
       return copy;
     }
-    
+
   }
 
   // ////////////////////////Fetches//////////////////////// //
@@ -123,7 +121,7 @@ class App extends Component {
       }
       else {
         // Has no Internetconection. Reset fetches so application will try again later when state.totalFetches has been met.
-        console.log("Client does not have Internet Connecion. Will not reload.")
+        console.log("Will not reload. Resetting..")
         this.setState({
           fetches: 0,
         });
@@ -162,13 +160,12 @@ class App extends Component {
     return (
       this.state.articles.length > 0 ?
         <div>
-          <ArticleContainer articles={this.state.articles} asides={this.state.asides} settings={this.state.config.settings} handleReFetch={this.handleReFetch} placeholder={this.state.config.placeholder}/>
+          <ArticleContainer articles={this.state.articles} asides={this.state.asides} settings={this.state.config.settings} handleReFetch={this.handleReFetch} placeholder={this.state.config.placeholder} />
         </div>
         :
         <div className="application__loading">
-          <p>Loading.. {this.state.applicationName}<br /><i>Fetching from api</i></p>
+          <h1>Loading.. {this.state.applicationName}<br /><i>Fetching from api</i></h1>
         </div>
-
     );
   }
 }
