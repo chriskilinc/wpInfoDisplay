@@ -2,6 +2,7 @@
   --padding-medium: 25px;
   --padding-large: 50px;
   --padding-huge: 75px;
+  --padding-article: 25px 75px;
   --article-height: 90vh;
   --footer-height: 10vh;
 }
@@ -21,7 +22,7 @@
   color:#fff;
 }
 .article-aside__article__container{
-  padding: var(--padding-huge);
+  padding: var(--padding-article);
   height: auto;
   max-height: var(--article-height)
 }
@@ -30,9 +31,7 @@
   /* margin: 5px; */
   color:transparent;
 }
-.article-aside__article__container p{
-  font-size: 24px;
-}
+
 .article-aside__aside{
   width:20vw;
   height:var(--article-height);
