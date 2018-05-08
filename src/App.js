@@ -16,10 +16,10 @@ class App extends Component {
     this.state = {
       articles: [],
       asides: [],
-      wpApiUrl: "https://it.tvostra.se/wp-json/wp/v2/posts?_embed",  //  Wordpress REST API url
-      applicationName: "IT Östra Gymnasiet",   // Application name, this will also be the browser tab title
+      wpApiUrl: "https://exp.tvostra.se/wp-json/wp/v2/posts?_embed",  //  Wordpress REST API url
+      applicationName: "Expeditionen",   // Application name, this will also be the browser tab title
       settings: {
-        cycleInSeconds: 7.5,  //  The amount of time an item will show before changing to the next in que
+        cycleInSeconds: 10,  //  The amount of time an item will show before changing to the next in que
         totalCycles: 1,       //  Total Number of cycles the gallery will run before fetching the Api
       },
       fetches: 0,         //  Current Api Fetches

@@ -11,7 +11,7 @@ class ArticleContainer extends React.Component {
       activeIndex: 0,
       timesRendered: 0,
       placeholder: {
-        image: "https://it.tvostra.se/wp-content/uploads/2018/05/black.png",
+        image: "https://exp.tvostra.se/wp-content/uploads/2018/05/black.png",
       }
     };
 
