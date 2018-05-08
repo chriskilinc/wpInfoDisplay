@@ -11,7 +11,7 @@ class ArticleContainer extends React.Component {
       activeIndex: 0,
       timesRendered: 0,
       placeholder: {
-        image: "http://sgy.chriskilinc.com/wp-content/uploads/2018/05/black.png",
+        image: "https://it.tvostra.se/wp-content/uploads/2018/05/black.png",
       }
     };
 
@@ -66,7 +66,7 @@ class ArticleContainer extends React.Component {
 
   render() {
     return (
-      /*this.props.articles[this.state.activeIndex]._embedded['wp:featuredmedia'] != null ?
+      this.props.articles[this.state.activeIndex]._embedded['wp:featuredmedia'] != null ?
         <article className="wp-article" style={{
           backgroundImage: `url(${this.props.articles[this.state.activeIndex]._embedded['wp:featuredmedia'][0].source_url})`,
         }}>
@@ -91,11 +91,11 @@ class ArticleContainer extends React.Component {
           <div className="wp-article__footer">
             <div className="wp-article__footer--padding">
               <h1>{this.props.articles[this.state.activeIndex].title.rendered}</h1>
-              <i>featuredmedia not found</i>
+              {/*<i>featuredmedia not found</i>*/}
             </div>
           </div>
-        </article>*/
-      <ArticleAside currentArticle={this.props.articles[this.state.activeIndex]} aside={this.props.asides[0]} placeholder={this.state.placeholder} />
+        </article>
+      // <ArticleAside currentArticle={this.props.articles[this.state.activeIndex]} aside={this.props.asides[0]} placeholder={this.state.placeholder} />
     )
   }
 }
