@@ -10,11 +10,7 @@ class ArticleContainer extends React.Component {
       articleIndexes: this.createRange(props.articles.length),
       activeIndex: 0,
       timesRendered: 0,
-      placeholder: {
-        image: "http://sgy.chriskilinc.com",
-      }
     };
-
   }
 
   componentDidMount() {
@@ -95,7 +91,7 @@ class ArticleContainer extends React.Component {
       //       </div>
       //     </div>
       //   </article>
-      <ArticleAside currentArticle={this.props.articles[this.state.activeIndex]} aside={this.props.asides[0]} placeholder={this.state.placeholder} />
+      <ArticleAside currentArticle={this.props.articles[this.state.activeIndex]} aside={this.props.asides[0]} placeholder={this.props.placeholder} />
     )
   }
 }

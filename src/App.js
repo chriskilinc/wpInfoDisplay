@@ -7,32 +7,29 @@ import _ from 'lodash';
 import './App.css';
 
 import ArticleContainer from './components/ArticleContainer';
+import config from './config.js';
 
 class App extends Component {
   constructor() {
     super();
 
+    
     //  Initial State Properties
     this.state = {
       articles: [],
       asides: [],
-      wpApiUrl: "http://sgy.chriskilinc.com/wp-json/wp/v2/posts?_embed",  //  Wordpress REST API url
-      applicationName: "Sågbäcksgymnasiet",   // Application name, this will also be the browser tab title
-      settings: {
-        cycleInSeconds: 7.5,  //  The amount of time an item will show before changing to the next in que
-        totalCycles: 1,       //  Total Number of cycles the gallery will run before fetching the Api
-      },
+      config: config,
       fetches: 0,         //  Current Api Fetches
       totalFetches: 1000, //  Total Api Fetches until total window reload 
     }
     //  Set the document title / Browser tab text
-    window.document.title = this.state.applicationName;
+    window.document.title = this.state.config.applicationName;
   }
 
   componentDidMount = () => {
     //  Get Articles when component have mounted
     //  getArticles() will update state if successfull
-    this.getArticles(this.state.wpApiUrl);
+    this.getArticles(this.state.config.wpApiUrl);
 
   }
 
@@ -133,7 +130,7 @@ class App extends Component {
       }
     } else {
       //console.log("Refetching");
-      this.refetchArticles(this.state.wpApiUrl);
+      this.refetchArticles(this.state.config.wpApiUrl);
     }
   }
 
@@ -165,7 +162,7 @@ class App extends Component {
     return (
       this.state.articles.length > 0 ?
         <div>
-          <ArticleContainer articles={this.state.articles} asides={this.state.asides} settings={this.state.settings} handleReFetch={this.handleReFetch} />
+          <ArticleContainer articles={this.state.articles} asides={this.state.asides} settings={this.state.config.settings} handleReFetch={this.handleReFetch} placeholder={this.state.config.placeholder}/>
         </div>
         :
         <div className="application__loading">
