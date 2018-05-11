@@ -12,13 +12,11 @@ import config from './config.js';
 class App extends Component {
   constructor() {
     super();
-
-
     //  Initial State Properties
     this.state = {
       articles: [],
       asides: [],
-      config: config,
+      config: config,     //  Set current config in state from an imported config file
       fetches: 0,         //  Current Api Fetches
       totalFetches: 1000, //  Total Api Fetches until total window reload 
     }
@@ -97,7 +95,6 @@ class App extends Component {
       console.log('No post with category "Aside" found.');
       return copy;
     }
-
   }
 
   // ////////////////////////Fetches//////////////////////// //

@@ -2,6 +2,8 @@ import React from 'react';
 import '../gutenberg.css';
 import './ArticleAside.css';
 
+import Clock from './Clock';
+
 class ArticleAside extends React.Component {
   //  Looks for an "featuredmedia" / background Image on the Current Article
   //  If none is found, add a placehodler image
@@ -27,8 +29,7 @@ class ArticleAside extends React.Component {
           <aside className="article-aside__aside">
             <div className="article-aside__aside__container">
               <div className="article-aside__clock">
-                <h1>00:00</h1>
-                <p>04 Maj</p>
+                <Clock date={true} lang={'swe-SWE'}/>
               </div>
               <div className="article-aside__aside-article">
                 <div className="article-aside__aside-article__container">
