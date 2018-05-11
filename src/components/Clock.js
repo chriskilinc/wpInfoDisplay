@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import './Clock.css';
 
+/**
+ * SETTINGS / PROPS
+ * @param {bool} - date - Will the component return a Date? If true the current date will be returned as text
+ * @param {string} - lang - Declares what language the Date will show in. 
+ */
 class Clock extends Component {
   constructor(props){
     super(props);
+
+    if(this.props.lang == '' || null)
+      this.props.lang = 'en-us'
+
     this.state = {
       time:new Date(),
     };
@@ -18,6 +27,7 @@ class Clock extends Component {
   }
 
   componentDidMount() {
+    //  Starts a timer when component did mount
     this.timerID = setInterval(
       () => this.tick(),
       1000
@@ -28,9 +38,10 @@ class Clock extends Component {
     clearInterval(this.timerID);
   }
 
+  //  This is what happens every tick of the timer
   tick() {
     this.setState({
-      time: new Date()
+      time: new Date(), //  Sets the states time to new current time every tick
     });
   }
 
