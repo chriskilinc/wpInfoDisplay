@@ -1,0 +1,6 @@
+.clock{
+  padding: 10px;
+}
+.clock p{
+  text-transform: capitalize;
+}
