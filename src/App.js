@@ -89,10 +89,12 @@ class App extends Component {
   filterWpArrayByCategory = (array, categoryName) => {
     let copy = [...array];
     let filterArray = copy.filter(x => x._embedded['wp:term'][0][0].name == categoryName);
-    if (filterArray[0] != null) {
+    if (filterArray.length > 0) {
+      console.log("Found object with Category: "+categoryName);
       return filterArray;
     } else {
-      console.log('No post with category "Aside" found.');
+      console.log("Did not find object with Category: "+categoryName);
+      // console.log(filterArray)
       return copy;
     }
   }
@@ -107,9 +109,10 @@ class App extends Component {
 
   handleReFetch = () => {
     //  If the application have had x amount of fetches, reload the page (Solves: If new sourcecode have been remotely updated on the server, reload)
-    console.log(this.state.fetches)
+    if(this.state.fetches % 10 == 0){
+      console.log("Full fetch cycles until reload: "+this.state.fetches+" / "+this.state.totalFetches);
+    }
     if (this.state.fetches === this.state.totalFetches) {
-
       // Check internetconection
       if (this.hasInternet) {
         //  Client has Internet Conection. Reload location.
@@ -124,7 +127,6 @@ class App extends Component {
         });
       }
     } else {
-      //console.log("Refetching");
       this.refetchArticles(this.state.config.wpApiUrl);
     }
   }
