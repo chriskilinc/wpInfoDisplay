@@ -19,6 +19,7 @@ class App extends Component {
       config: config,     //  Set current config in state from an imported config file
       fetches: 0,         //  Current Api Fetches
       totalFetches: 1000, //  Total Api Fetches until total window reload 
+      hasAside:false,
     }
     //  Set the document title / Browser tab text
     window.document.title = this.state.config.applicationName;
@@ -60,6 +61,9 @@ class App extends Component {
             articles: this.filterWpArrayByCategory(response.data, "Article"),
             asides: this.filterWpArrayByCategory(response.data, "Aside"),
           });
+          if(this.state.asides.length > 0){
+            console.log(this.state.asides);
+          }
         } else {
           //  If array is empty, refetch from api
           console.log("array is empty");
@@ -69,20 +73,6 @@ class App extends Component {
       .catch(error => {
         console.log(error);
       });
-  }
-
-  findAsideArticle = (array) => {
-    let copy = [...array];
-    let aside = copy.filter(x => x._embedded['wp:term'][0][0].name == "Aside");
-    //  Check If there is any articles with category "Aside" asigned
-    if (aside[0] != null) {
-      return aside;
-    } else {
-      //  If the filter returns nothing, return a copy of the original array
-      //  Probably want to log this in some other way
-      console.log('No post with category "Aside" found.');
-      return copy;
-    }
   }
 
   //  Filter out Articles by Category Name
