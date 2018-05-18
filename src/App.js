@@ -19,7 +19,6 @@ class App extends Component {
       config: config,     //  Set current config in state from an imported config file
       fetches: 0,         //  Current Api Fetches
       totalFetches: 1000, //  Total Api Fetches until total window reload 
-      hasAside:false,
     }
     //  Set the document title / Browser tab text
     window.document.title = this.state.config.applicationName;
