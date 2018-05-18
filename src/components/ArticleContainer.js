@@ -2,6 +2,7 @@ import React from 'react';
 import '../gutenberg.css';
 
 import ArticleAside from '../components/ArticleAside';
+import Article from './Article';
 
 class ArticleContainer extends React.Component {
   constructor(props) {
@@ -65,35 +66,36 @@ class ArticleContainer extends React.Component {
 
       this.props.settings.hasAside == false ?
 
-        this.props.articles[this.state.activeIndex]._embedded['wp:featuredmedia'] != null ?
-          <article className="wp-article" style={{
-            backgroundImage: `url(${this.props.articles[this.state.activeIndex]._embedded['wp:featuredmedia'][0].source_url})`,
-          }}>
-            <div className="wp-article__content">
-              <div className="wp-article__content--padding">
-                <p dangerouslySetInnerHTML={{ __html: this.props.articles[this.state.activeIndex].content.rendered }}></p>
-              </div>
-            </div>
-            <div className="wp-article__footer">
-              <div className="wp-article__footer--padding">
-                <h1>{this.props.articles[this.state.activeIndex].title.rendered}</h1>
-              </div>
-            </div>
-          </article>
-          :
-          <article className="wp-article wp-article--nobg">
-            <div className="wp-article__content">
-              <div className="wp-article__content--padding">
-                <p dangerouslySetInnerHTML={{ __html: this.props.articles[this.state.activeIndex].content.rendered }}></p>
-              </div>
-            </div>
-            <div className="wp-article__footer">
-              <div className="wp-article__footer--padding">
-                <h1>{this.props.articles[this.state.activeIndex].title.rendered}</h1>
-                {/*<i>featuredmedia not found</i>*/}
-              </div>
-            </div>
-          </article>
+        // this.props.articles[this.state.activeIndex]._embedded['wp:featuredmedia'] != null ?
+        //   <article className="wp-article" style={{
+        //     backgroundImage: `url(${this.props.articles[this.state.activeIndex]._embedded['wp:featuredmedia'][0].source_url})`,
+        //   }}>
+        //     <div className="wp-article__content">
+        //       <div className="wp-article__content--padding">
+        //         <p dangerouslySetInnerHTML={{ __html: this.props.articles[this.state.activeIndex].content.rendered }}></p>
+        //       </div>
+        //     </div>
+        //     <div className="wp-article__footer">
+        //       <div className="wp-article__footer--padding">
+        //         <h1>{this.props.articles[this.state.activeIndex].title.rendered}</h1>
+        //       </div>
+        //     </div>
+        //   </article>
+        //   :
+        //   <article className="wp-article wp-article--nobg">
+        //     <div className="wp-article__content">
+        //       <div className="wp-article__content--padding">
+        //         <p dangerouslySetInnerHTML={{ __html: this.props.articles[this.state.activeIndex].content.rendered }}></p>
+        //       </div>
+        //     </div>
+        //     <div className="wp-article__footer">
+        //       <div className="wp-article__footer--padding">
+        //         <h1>{this.props.articles[this.state.activeIndex].title.rendered}</h1>
+        //         {/*<i>featuredmedia not found</i>*/}
+        //       </div>
+        //     </div>
+        //   </article>
+          <Article currentArticle={this.props.articles[this.state.activeIndex]} placeholder={this.props.placeholder}/>
         : //  Else
         <ArticleAside currentArticle={this.props.articles[this.state.activeIndex]} aside={this.props.asides[0]} placeholder={this.props.placeholder} />
     )
