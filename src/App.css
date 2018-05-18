@@ -45,11 +45,13 @@ h5 {
   font-size: 1.25rem;
 }
 
-
 /*  Footer  */
 
 .wp-article__footer {
   height: 12.5vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .wp-article__footer h1 {
