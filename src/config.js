@@ -1,4 +1,4 @@
-
+const placeholderBackgroundImage = require ('./images/placeholderBg.png');
 module.exports = {
   wpApiUrl: "http://smartgallery.chriskilinc.com/wp-json/wp/v2/posts?_embed",  //  Wordpress REST API url
   applicationName: "SmartGallery",   // Application name, this will also be the browser tab title
@@ -8,6 +8,6 @@ module.exports = {
     hasAside: false,
   },
   placeholder: {
-    image: "./images/placeholderBg.png",   //  Placeholder Image for articles without an FeaturedImage attatched
+    image: placeholderBackgroundImage,   //  Placeholder Image for articles without an FeaturedImage attatched
   },
 }
