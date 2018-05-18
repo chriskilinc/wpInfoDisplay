@@ -8,6 +8,6 @@ module.exports = {
     hasAside: false,
   },
   placeholder: {
-    image: "http://sgy.chriskilinc.com/wp-content/uploads/2018/05/black-1.png",   //  Placeholder Image for articles without an FeaturedImage attatched
+    image: "./images/placeholderBg.png",   //  Placeholder Image for articles without an FeaturedImage attatched
   },
 }
