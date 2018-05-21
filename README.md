@@ -65,3 +65,5 @@ Created by `Christopher Kilinc`<br>
 [Website](https://chriskilinc.com)<br>
 [Github](https://github.com/chriskilinc/wpInfoScreen)<br>
 [Trello](https://trello.com/b/C06qjDDc/wpinfo)
+<br><br>
+[DEMO](http://wpinfodisplay.chriskilinc.com/app/)
