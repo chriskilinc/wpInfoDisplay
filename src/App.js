@@ -152,7 +152,18 @@ class App extends Component {
         </div>
         :
         <div className="application__loading">
-          <h1>Loading.. {this.state.applicationName}<br /><i>Fetching from api</i></h1>
+          <div className="application__loading__container">
+            <div class="spinner">
+              <div class="cube1"></div>
+              <div class="cube2"></div>
+            </div>
+            <p className="application__loading__text">Loading<br/>{this.state.config.applicationName}</p>
+          </div>
+          <div className="application__loading__author">
+            <p className="application__loading__author--text">Created by Christopher Kilinc<br/>(+46)73-664 72 93<br/>chriskilinc.com</p>
+          </div>
+          
+          {/*<h1>Loading.. {this.state.applicationName}<br /><i>Fetching from api</i></h1>*/}
         </div>
     );
   }
