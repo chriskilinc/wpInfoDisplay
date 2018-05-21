@@ -1,4 +1,4 @@
-## WordPress Information Screen Gallery
+## WordPress Information Display Gallery
 
 An easy way to both display and edit Information the web. 
 Using ReactJs as the Gallery and the WordPress as both data storage and content management system.
