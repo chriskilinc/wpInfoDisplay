@@ -13,10 +13,17 @@ class Article extends React.Component {
     }
   }
 
+  checkTitleStatus = () => {
+    //  Hides the Title if settings say so
+    if(this.props.settings.showTitle == false){
+      this.props.currentArticle.title.rendered = "";
+    }
+  }
+
   render() {
     this.checkBackgroundImageStatus();
+    this.checkTitleStatus();
     return (
-
       <article className="wp-article" style={{
         backgroundImage: `url(${this.props.currentArticle._embedded['wp:featuredmedia'][0].source_url})`,
       }}>
@@ -27,6 +34,7 @@ class Article extends React.Component {
         </div>
         <div className="wp-article__footer">
           <div className="wp-article__footer--padding">
+            
             <h1>{this.props.currentArticle.title.rendered}</h1>
           </div>
         </div>
