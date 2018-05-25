@@ -13,8 +13,16 @@ class ArticleAside extends React.Component {
     }
   }
 
+  checkAsideTitleStatus = () => {
+    //  Hides the Title if settings say so
+    if(this.props.settings.showAsideTitle == false){
+      this.props.aside.title.rendered = "";
+    }
+  }
+
   render() {
     this.checkBackgroundImageStatus();
+    this.checkAsideTitleStatus();
     return (
       <section className="article-aside">
         <div className="article-aside__container">

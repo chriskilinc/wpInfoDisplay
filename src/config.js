@@ -7,6 +7,7 @@ module.exports = {
     totalCycles: 1,       //  Total Number of cycles the gallery will run before fetching the Api
     hasAside: true,
     showTitle: false,
+    showAsideTitle: false,
   },
   placeholder: {
     image: placeholderBackgroundImage,   //  Placeholder Image for articles without an FeaturedImage attatched
