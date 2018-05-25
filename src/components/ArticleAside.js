@@ -42,7 +42,7 @@ class ArticleAside extends React.Component {
         </div>
         <footer className="article-aside__footer">
           <div className="article-aside__footer__banner">
-            <img src="http://touch.tvostra.se/wp-content/uploads/2018/04/ostra_touch_topnav-1.png" />
+            <img src="http://sgy.chriskilinc.com/wp-content/uploads/2018/05/sgy_banner.png" />
           </div>
         </footer>
       </section>
