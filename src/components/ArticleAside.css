@@ -53,7 +53,7 @@
   display: flex;
   width:100vw;
   height:var(--footer-height);
-  background: #f08100;
+  background: #ea5d0d;
   align-items: center;
 }
 .article-aside__footer__banner{
