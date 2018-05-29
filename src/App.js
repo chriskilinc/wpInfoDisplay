@@ -22,6 +22,7 @@ class App extends Component {
     }
     //  Set the document title / Browser tab text
     window.document.title = this.state.config.applicationName;
+    console.log("WpInfoDisplay//Current Version: "+this.state.config.version.number);
   }
 
   componentDidMount = () => {
@@ -61,7 +62,7 @@ class App extends Component {
             asides: this.filterWpArrayByCategory(response.data, "Aside"),
           });
           if(this.state.asides.length > 0){
-            console.log(this.state.asides);
+            // console.log(this.state.asides);
           }
         } else {
           //  If array is empty, refetch from api
@@ -71,6 +72,7 @@ class App extends Component {
       })
       .catch(error => {
         console.log(error);
+        this.handleRefetchWithTimeout(url, 10000);
       });
   }
 
@@ -91,6 +93,7 @@ class App extends Component {
   // ////////////////////////Fetches//////////////////////// //
   //  Fetches API after x amount of time
   handleRefetchWithTimeout = (url, timeout) => {
+    console.log("Could not fetch API, will reFetch in: "+timeout+"ms");
     setInterval(
       this.getArticles(url),
       timeout);
@@ -141,6 +144,7 @@ class App extends Component {
       })
       .catch(error => {
         console.log(error);
+        this.handleRefetchWithTimeout(url, 10000);
       });
   }
 
@@ -153,9 +157,9 @@ class App extends Component {
         :
         <div className="application__loading">
           <div className="application__loading__container">
-            <div class="spinner">
-              <div class="cube1"></div>
-              <div class="cube2"></div>
+            <div className="spinner">
+              <div className="cube1"></div>
+              <div className="cube2"></div>
             </div>
             <p className="application__loading__text">Loading<br/>{this.state.config.applicationName}</p>
           </div>
