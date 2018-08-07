@@ -3,10 +3,6 @@ import '../gutenberg.css';
 
 
 class Article extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   checkBackgroundImageStatus = () => {
     if (this.props.currentArticle._embedded['wp:featuredmedia'] == null) {
       this.props.currentArticle._embedded['wp:featuredmedia'] = [{ source_url: this.props.placeholder.image }];
@@ -15,7 +11,7 @@ class Article extends React.Component {
 
   checkTitleStatus = () => {
     //  Hides the Title if settings say so
-    if(this.props.settings.showTitle == false){
+    if(this.props.settings.showTitle === false){
       this.props.currentArticle.title.rendered = "";
     }
   }

@@ -1,7 +1,6 @@
 import React from 'react';
 import '../gutenberg.css';
 import './ArticleAside.css';
-
 import Clock from './Clock';
 
 class ArticleAside extends React.Component {
@@ -15,7 +14,7 @@ class ArticleAside extends React.Component {
 
   checkAsideTitleStatus = () => {
     //  Hides the Title if settings say so
-    if(this.props.settings.showAsideTitle == false){
+    if(this.props.settings.showAsideTitle === false){
       this.props.aside.title.rendered = "";
     }
   }
@@ -50,7 +49,7 @@ class ArticleAside extends React.Component {
         </div>
         <footer className="article-aside__footer">
           <div className="article-aside__footer__banner">
-            <img src="http://sgy.chriskilinc.com/wp-content/uploads/2018/05/sgy_banner.png" />
+            <img src="http://sgy.chriskilinc.com/wp-content/uploads/2018/05/sgy_banner.png" alt="banner" />
           </div>
         </footer>
       </section>

@@ -1,6 +1,5 @@
 import React from 'react';
 import '../gutenberg.css';
-
 import ArticleAside from '../components/ArticleAside';
 import Article from './Article';
 
@@ -39,7 +38,6 @@ class ArticleContainer extends React.Component {
         timesRendered: 0,
       });
       //  Refetch api
-
       this.props.handleReFetch();
     }
     else {
@@ -57,14 +55,13 @@ class ArticleContainer extends React.Component {
   }
 
   secondsToMs = (sec) => {
-    //const ms = sec * 1000;
     return sec * 1000;
   }
 
   render() {
     return (
 
-      this.props.settings.hasAside == false ?
+      this.props.settings.hasAside === false ?
 
         // this.props.articles[this.state.activeIndex]._embedded['wp:featuredmedia'] != null ?
         //   <article className="wp-article" style={{

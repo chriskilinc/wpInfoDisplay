@@ -1,7 +1,6 @@
 import React, {
   Component
 } from 'react';
-import logo from './logo.svg';
 import axios from 'axios';
 import _ from 'lodash';
 import './App.css';
@@ -22,7 +21,7 @@ class App extends Component {
     }
     //  Set the document title / Browser tab text
     window.document.title = this.state.config.applicationName;
-    console.log("WpInfoDisplay//Current Version: "+this.state.config.version.number);
+    console.log("WpInfoDisplay// Current Version: "+this.state.config.version.number);
   }
 
   componentDidMount = () => {
@@ -79,12 +78,12 @@ class App extends Component {
   //  Filter out Articles by Category Name
   filterWpArrayByCategory = (array, categoryName) => {
     let copy = [...array];
-    let filterArray = copy.filter(x => x._embedded['wp:term'][0][0].name == categoryName);
+    let filterArray = copy.filter(x => x._embedded['wp:term'][0][0].name === categoryName);
     if (filterArray.length > 0) {
-      console.log("Found object with Category: "+categoryName);
+      // console.log("Found object with Category: "+categoryName);
       return filterArray;
     } else {
-      console.log("Did not find object with Category: "+categoryName);
+      // console.log("Did not find object with Category: "+categoryName);
       // console.log(filterArray)
       return copy;
     }
@@ -101,7 +100,7 @@ class App extends Component {
 
   handleReFetch = () => {
     //  If the application have had x amount of fetches, reload the page (Solves: If new sourcecode have been remotely updated on the server, reload)
-    if(this.state.fetches % 10 == 0){
+    if(this.state.fetches % 10 === 0){
       console.log("Full fetch cycles until reload: "+this.state.fetches+" / "+this.state.totalFetches);
     }
     if (this.state.fetches === this.state.totalFetches) {

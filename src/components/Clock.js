@@ -10,7 +10,7 @@ class Clock extends Component {
   constructor(props){
     super(props);
 
-    if(this.props.lang == '' || null)
+    if(this.props.lang === '' || null)
       this.props.lang = 'en-us'
 
     this.state = {
