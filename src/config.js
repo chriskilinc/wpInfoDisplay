@@ -1,4 +1,5 @@
 const placeholderBackgroundImage = require ('./images/placeholderBg.png');
+const packagejson = require('../package.json');
 module.exports = {
   wpApiUrl: "https://wpinfodisplay.chriskilinc.com/wp-json/wp/v2/posts?_embed",  //  Wordpress REST API url
   applicationName: "Wordpress Information Display",   // Application name, this will also be the browser tab title
@@ -13,6 +14,6 @@ module.exports = {
     image: placeholderBackgroundImage,   //  Placeholder Image for articles without an FeaturedImage attatched
   },
   version:{
-    number:"0.1.0",
+    number:packagejson.version,
   }
 }

@@ -3,6 +3,7 @@ import '../gutenberg.css';
 import './ArticleAside.css';
 import Clock from './Clock';
 
+
 class ArticleAside extends React.Component {
   //  Looks for an "featuredmedia" / background Image on the Current Article
   //  If none is found, add a placehodler image
